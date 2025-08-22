@@ -1,0 +1,401 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Your App — Home</title>
+  <meta name="description" content="A clean, responsive home page template.">
+  <meta name="theme-color" content="#0ea5e9">
+  <meta property="og:title" content="Your App — Home">
+  <meta property="og:description" content="A clean, responsive home page template.">
+  <meta property="og:type" content="website">
+  <style>
+    :root {
+      --bg: #0b1020;
+      --panel: #0f172a;
+      --text: #e5e7eb;
+      --muted: #94a3b8;
+      --border: #1f2937;
+      --accent: #0ea5e9;
+      --accent-2: #22d3ee;
+      --ring: 0 0 0 4px color-mix(in oklab, var(--accent) 25%, transparent);
+      --radius: 14px;
+      --shadow-lg: 0 10px 30px rgba(2, 6, 23, 0.6), 0 1px 0 rgba(255,255,255,0.04) inset;
+    }
+
+    @media (prefers-color-scheme: light) {
+      :root {
+        --bg: #f8fafc;
+        --panel: #ffffff;
+        --text: #0f172a;
+        --muted: #475569;
+        --border: #e5e7eb;
+        --accent: #0284c7;
+        --accent-2: #06b6d4;
+        --shadow-lg: 0 10px 30px rgba(2, 6, 23, 0.07), 0 1px 0 rgba(2,6,23,0.02) inset;
+      }
+    }
+
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      color: var(--text);
+      background: radial-gradient(1000px 600px at 80% -10%, color-mix(in oklab, var(--accent) 18%, transparent), transparent 60%),
+                  radial-gradient(800px 600px at -10% 10%, color-mix(in oklab, var(--accent-2) 18%, transparent), transparent 60%),
+                  var(--bg);
+      line-height: 1.6;
+    }
+
+    .container {
+      width: min(1120px, 92%);
+      margin: 0 auto;
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: saturate(180%) blur(8px);
+      background: color-mix(in oklab, var(--bg) 85%, transparent);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 0;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 700;
+      letter-spacing: 0.2px;
+    }
+
+    .logo {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      box-shadow: 0 8px 24px color-mix(in oklab, var(--accent) 25%, transparent);
+    }
+
+    .nav-links { display: none; gap: 18px; }
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      padding: 6px 10px;
+      border-radius: 8px;
+    }
+    .nav-links a:hover { color: var(--text); background: color-mix(in oklab, var(--panel) 60%, transparent); }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 16px;
+      border-radius: 12px;
+      border: 1px solid color-mix(in oklab, var(--accent) 30%, var(--border));
+      background: linear-gradient(180deg, color-mix(in oklab, var(--panel) 60%, transparent), color-mix(in oklab, var(--panel) 90%, transparent));
+      color: var(--text);
+      text-decoration: none;
+      box-shadow: var(--shadow-lg);
+      transition: transform .15s ease, box-shadow .2s ease, border-color .2s ease;
+    }
+    .btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 14px 38px rgba(2,6,23,.55);
+      border-color: var(--accent);
+    }
+    .btn.primary {
+      background: linear-gradient(135deg, color-mix(in oklab, var(--accent) 65%, var(--panel)), color-mix(in oklab, var(--accent-2) 45%, var(--panel)));
+      border-color: transparent;
+    }
+
+    .hero {
+      padding: clamp(48px, 8vw, 100px) 0;
+    }
+
+    .hero-inner {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: clamp(24px, 3vw, 48px);
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: color-mix(in oklab, var(--panel) 55%, transparent);
+      color: var(--muted);
+      font-size: 12px;
+      letter-spacing: .3px;
+      text-transform: uppercase;
+    }
+
+    .hero h1 {
+      margin: 14px 0 12px;
+      font-size: clamp(32px, 6vw, 56px);
+      line-height: 1.07;
+      letter-spacing: -0.02em;
+    }
+
+    .subhead { color: var(--muted); font-size: clamp(16px, 2.2vw, 19px); }
+
+    .cta-row { display: flex; gap: 12px; margin-top: 22px; flex-wrap: wrap; }
+
+    .card {
+      border: 1px solid var(--border);
+      background: linear-gradient(180deg, color-mix(in oklab, var(--panel) 70%, transparent), color-mix(in oklab, var(--panel) 95%, transparent));
+      border-radius: var(--radius);
+      padding: clamp(16px, 2vw, 22px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .hero-visual {
+      position: relative;
+      aspect-ratio: 4/3;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      border-radius: calc(var(--radius) + 4px);
+      border: 1px solid var(--border);
+      background: radial-gradient(800px 400px at 50% 10%, color-mix(in oklab, var(--accent) 25%, transparent), transparent 60%), var(--panel);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .blob {
+      position: absolute;
+      width: 580px;
+      height: 580px;
+      background: radial-gradient(closest-side, color-mix(in oklab, var(--accent) 50%, transparent), transparent);
+      filter: blur(30px);
+      opacity: .3;
+      animation: float 12s ease-in-out infinite;
+    }
+
+    .ring {
+      position: absolute;
+      width: 70%;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      border: 2px dashed color-mix(in oklab, var(--accent) 40%, var(--border));
+      animation: spin 24s linear infinite;
+    }
+
+    @keyframes float { 50% { transform: translateY(-18px) scale(1.03); } }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .kpis {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin-top: 22px;
+    }
+
+    .kpi { text-align: center; padding: 16px; border-radius: 12px; border: 1px dashed var(--border); background: color-mix(in oklab, var(--panel) 60%, transparent); }
+    .kpi strong { display: block; font-size: 22px; }
+    .kpi span { color: var(--muted); font-size: 13px; }
+
+    .section {
+      padding: clamp(36px, 7vw, 80px) 0;
+    }
+
+    .section h2 {
+      margin: 0 0 10px;
+      font-size: clamp(22px, 3.2vw, 34px);
+      letter-spacing: -0.01em;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .feature {
+      display: grid;
+      gap: 8px;
+      align-content: start;
+      padding: 18px;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      background: color-mix(in oklab, var(--panel) 70%, transparent);
+    }
+
+    .feature h3 { margin: 0; font-size: 18px; }
+    .feature p { margin: 0; color: var(--muted); font-size: 14px; }
+
+    .cta {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 18px;
+      align-items: center;
+    }
+
+    .footer {
+      padding: 30px 0 60px;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+      background: color-mix(in oklab, var(--panel) 60%, transparent);
+    }
+
+    @media (max-width: 960px) {
+      .nav-links { display: none; }
+      .hero-inner, .cta { grid-template-columns: 1fr; }
+      .kpis { grid-template-columns: repeat(2, 1fr); }
+      .grid { grid-template-columns: 1fr; }
+    }
+
+    @media (min-width: 961px) { .nav-links { display: inline-flex; } }
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="#" aria-label="Go to home">
+        <span class="logo" aria-hidden="true"></span>
+        <span>Your App</span>
+      </a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="#features">Features</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <a class="btn" href="#get-started">Sign in</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-inner">
+        <div>
+          <span class="eyebrow">Now available • v1.0</span>
+          <h1>Build modern experiences with a beautiful starter</h1>
+          <p class="subhead">A fast, accessible, and responsive home page template with pleasant defaults and tasteful animations. Plug in your product copy and ship.</p>
+          <div class="cta-row">
+            <a class="btn primary" href="#get-started">Get started</a>
+            <a class="btn" href="#features">See features</a>
+          </div>
+          <div class="kpis">
+            <div class="kpi"><strong>100ms</strong><span>First Interaction</span></div>
+            <div class="kpi"><strong>99.9%</strong><span>Uptime</span></div>
+            <div class="kpi"><strong>A11y</strong><span>WCAG 2.1 AA</span></div>
+            <div class="kpi"><strong>SEO</strong><span>Ready</span></div>
+          </div>
+        </div>
+        <div class="hero-visual" role="img" aria-label="Product preview">
+          <div class="blob" style="top:-20%; left:-10%"></div>
+          <div class="blob" style="bottom:-25%; right:-15%; animation-delay: -6s"></div>
+          <div class="ring" style="--i:1"></div>
+          <div class="ring" style="width: 45%; animation-direction: reverse; animation-duration: 32s"></div>
+          <div class="card" style="position: relative; z-index: 2; width: 86%; max-width: 520px;">
+            <div style="display:grid; gap:10px">
+              <div style="display:flex; align-items:center; gap:10px;">
+                <div style="width:28px; height:28px; border-radius:8px; background: linear-gradient(135deg, var(--accent), var(--accent-2));"></div>
+                <div style="font-weight:600">Example Widget</div>
+                <div style="margin-left:auto; color:var(--muted); font-size:12px">Live</div>
+              </div>
+              <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px;">
+                <div class="card">
+                  <div style="height:8px; width:40%; background:var(--border); border-radius:999px;"></div>
+                  <div style="height:8px; width:70%; background:var(--border); border-radius:999px; margin-top:8px"></div>
+                </div>
+                <div class="card">
+                  <div style="height:8px; width:30%; background:var(--border); border-radius:999px;"></div>
+                  <div style="height:8px; width:50%; background:var(--border); border-radius:999px; margin-top:8px"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="features" class="section">
+      <div class="container">
+        <h2>Everything you need to start fast</h2>
+        <p class="subhead">Clean markup, responsive layout, accessible components, and delightful micro-interactions.</p>
+        <div class="grid" style="margin-top:18px">
+          <article class="feature">
+            <h3>Responsive by default</h3>
+            <p>Scales gracefully from mobile to desktop using modern CSS grid and flex utilities.</p>
+          </article>
+          <article class="feature">
+            <h3>Accessible</h3>
+            <p>Semantic HTML with sensible color contrast and focus states out of the box.</p>
+          </article>
+          <article class="feature">
+            <h3>Performance minded</h3>
+            <p>No runtime frameworks or heavy assets. Ship a fast first paint.</p>
+          </article>
+          <article class="feature">
+            <h3>Beautiful defaults</h3>
+            <p>Curated typography, spacing, and shadows that look great everywhere.</p>
+          </article>
+          <article class="feature">
+            <h3>Easy to customize</h3>
+            <p>Tweak color variables, radius, and layout tokens to match your brand.</p>
+          </article>
+          <article class="feature">
+            <h3>Production-ready</h3>
+            <p>Includes navigation, hero, features, CTA, and footer sections.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container cta">
+        <div>
+          <h2>Ready to build your next thing?</h2>
+          <p class="subhead">Use this template as a foundation and focus on what matters—your product.</p>
+          <div class="cta-row">
+            <a class="btn primary" href="#get-started">Create account</a>
+            <a class="btn" href="#docs">Read docs</a>
+          </div>
+        </div>
+        <div class="card">
+          <form class="card" style="display:grid; gap:12px" onsubmit="event.preventDefault(); alert('Thanks! You\'re on the list.');">
+            <div style="font-weight:600">Get product updates</div>
+            <label style="display:grid; gap:8px">
+              <span style="font-size:12px; color:var(--muted)">Email address</span>
+              <input type="email" required placeholder="you@company.com" style="padding:12px 14px; border-radius:10px; border:1px solid var(--border); background: color-mix(in oklab, var(--panel) 80%, transparent); color: var(--text); outline: none;" onfocus="this.style.boxShadow='var(--ring)';" onblur="this.style.boxShadow='none';">
+            </label>
+            <button class="btn primary" type="submit">Subscribe</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container" style="display:flex; flex-wrap:wrap; gap:12px; align-items:center; justify-content:space-between;">
+      <div style="display:flex; align-items:center; gap:10px;">
+        <span class="logo" aria-hidden="true"></span>
+        <span>© <span id="year"></span> Your Company</span>
+      </div>
+      <div style="display:flex; gap:14px;">
+        <a href="#" style="color:inherit;">Privacy</a>
+        <a href="#" style="color:inherit;">Terms</a>
+        <a href="#" style="color:inherit;">Status</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
