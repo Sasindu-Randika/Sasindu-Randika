@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Home</title>
+  <meta name="description" content="Home page">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/workspace/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav" aria-label="Primary">
+      <a class="brand" href="#" aria-label="Homepage">Brand</a>
+      <button class="nav-toggle" aria-controls="primary-menu" aria-expanded="false" aria-label="Toggle menu">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+      <ul id="primary-menu" class="nav-list">
+        <li><a href="#features">Features</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a class="btn btn-sm" href="#get-started">Get started</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-content">
+        <h1>Build something great</h1>
+        <p>Create fast, modern experiences with this clean starter template.</p>
+        <div class="actions">
+          <a class="btn" href="#get-started">Get started</a>
+          <a class="btn btn-ghost" href="#learn-more">Learn more</a>
+        </div>
+      </div>
+      <div class="hero-visual" aria-hidden="true"></div>
+    </section>
+
+    <section id="features" class="section features">
+      <h2>Features</h2>
+      <div class="grid">
+        <article>
+          <h3>Responsive</h3>
+          <p>Looks great on mobile, tablet, and desktop.</p>
+        </article>
+        <article>
+          <h3>Accessible</h3>
+          <p>Keyboard friendly, proper semantics, and ARIA where needed.</p>
+        </article>
+        <article>
+          <h3>Lightweight</h3>
+          <p>Minimal CSS and JS for snappy performance.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>
+      <span>&copy; <span id="year"></span> Brand</span>
+      <span class="dot" aria-hidden="true">·</span>
+      <a href="#">Privacy</a>
+      <span class="dot" aria-hidden="true">·</span>
+      <a href="#">Terms</a>
+    </p>
+  </footer>
+
+  <script src="/workspace/script.js"></script>
+</body>
+</html>
